@@ -38,8 +38,9 @@ class ShapeCollector {
     public void showFigures() {
         if(!shapes.isEmpty()) {
             System.out.println("Contained figures:");
-            for(Shape shape: shapes);
-            System.out.println("Figure: " + shape.getShapeName() + "has field; " + shape.getField());
+            for(Shape shape: shapes) {
+                System.out.println("Figure: " + shape.getShapeName() + "has field; " + shape.getField());
+            }
         } else {
             System.out.println("There is nothing :(");
         }
@@ -64,7 +65,7 @@ class Circle implements Shape {
 
     @Override
     public double getField() {
-        return Math.PI * Math.pow(radius, 5);
+        return Math.PI * Math.pow(radius, 2);
     }
 }
 

@@ -35,16 +35,6 @@ public class ForumTestSuite {
     }
 
     @Test
-    public void testAddComment() {
-        ForumUser forumUser = new ForumUser("Domi", "Dominika Kowalska");
-        ForumPost thePost = new ForumPost("I'm glad that you're fine!", "Domi");
-
-        forumUser.addComment(thePost, "Domi", "I'm glad that you're fine!");
-
-        Assert.assertEquals(1, forumUser.getCommentsQuantity());
-    }
-
-    @Test
     public void testGetPost() {
         ForumUser forumUser = new ForumUser("Domi", "Dominika Kowalska");
         ForumPost thePost = new ForumPost("Hello, what's up, guys?", "Domi");
@@ -92,29 +82,5 @@ public class ForumTestSuite {
         Assert.assertFalse(result);
     }
 
-    @Test
-    public void testRemovePost() {
-        ForumUser forumUser = new ForumUser("Domi", "Dominika Raczkowska");
-        ForumPost thePost = new ForumPost("Hello, what's up, guys?", "Domi");
-        forumUser.addPost(thePost.getAuthor(), thePost.getPostBody());
-
-        boolean result = forumUser.removePost(thePost);
-
-        Assert.assertTrue(result);
-        Assert.assertEquals(0, forumUser.getPostsQuantity());
-    }
-
-    @Test
-    public void testRemoveComment() {
-        ForumUser forumUser = new ForumUser("Domi", "Dominika Kowalska");
-        ForumPost thePost = new ForumPost("Hello, what's up, guys?", "Domi");
-        ForumComment theComment = new ForumComment(thePost, "I'm glad that you're fine!", "Domi");
-        forumUser.addComment(thePost, theComment.getAuthor(), theComment.getCommentBody());
-
-        boolean result = forumUser.removeComment(theComment);
-
-        Assert.assertTrue(result);
-        Assert.assertEquals(0, forumUser.getCommentsQuantity());
-    }
 }
 
