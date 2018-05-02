@@ -4,9 +4,7 @@ import com.kodilla.testing.forum.ForumComment;
 import com.kodilla.testing.forum.ForumPost;
 import com.kodilla.testing.forum.ForumUser;
 import org.junit.*;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+
 
 public class ForumTestSuite {
     private static int testCounter = 0;

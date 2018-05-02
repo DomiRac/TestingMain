@@ -18,6 +18,7 @@ public class CollectionTestSuite {
 
     @After
     public void afterEveryTest() {
+        System.out.println("Test done number: " + testCounter + " done.");
 
     }
     @Test
