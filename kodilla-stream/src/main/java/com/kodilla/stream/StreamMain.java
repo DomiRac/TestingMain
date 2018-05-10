@@ -1,30 +1,27 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.book.Book;
+import com.kodilla.stream.book.BookDirectory;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.ExpressionExecutor;
+import java.time.LocalDate;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
+        Forum forum = new Forum();
 
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a + b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a - b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a * b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a / b);
+        Map<Integer, ForumUser> theResultMapOfUsers = forum.getUserList().stream()
+                .filter(forumUser -> forumUser.getSex() == 'M')
+                .filter(forumUser -> forumUser.getDateOfBirth().getYear() < 1998 )
+                .filter(forumUser -> forumUser.getNumberOfPosts() > 1)
+                .collect(Collectors.toMap(ForumUser::getId, forumUser -> forumUser));
 
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
-
-        poemBeautifier.beautify("Kittieeeees", (a -> a.toUpperCase()));
-        poemBeautifier.beautify("Kittieeeees", (a -> a + "are so sweeeet"));
-        poemBeautifier.beautify("Kittieeeees!", ( a -> "WHAAAAT? " + a));
-        poemBeautifier.beautify("Kittieeeees", (a -> String.valueOf(a.length())));
-        poemBeautifier.beautify("Kittieeeees", ( a -> a + a + a + a));
-        poemBeautifier.beautify("Kittieeeees", (a -> a.replace('i', '!')));
-
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
+        System.out.println("# forum user: " + theResultMapOfUsers.size());
+        theResultMapOfUsers.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
     }
 }
-
