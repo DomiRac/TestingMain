@@ -30,13 +30,9 @@ public class WorldTestSuite {
         wowWorld.addContinent(azeroth);
         wowWorld.addContinent(draenor);
 
-        List<World> worlds = new LinkedList<>();
-        worlds.add(wowWorld);
 
         BigDecimal totalPopulation = BigDecimal.ZERO;
-        for (World world: worlds){
-                totalPopulation = totalPopulation.add(wowWorld.getPeopleQuantity());
-        }
+        totalPopulation = totalPopulation.add(wowWorld.getPeopleQuantity());
 
         BigDecimal expectedPopulation = new BigDecimal("2331");
         Assert.assertEquals(expectedPopulation, totalPopulation);
