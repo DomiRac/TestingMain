@@ -1,17 +1,16 @@
 package com.kodilla.stream.world;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 public class Continent {
     private final String nameOfContinent;
-    private final List<Country> countries;
+    private final Set<Country> countries;
 
-    public Continent(String nameOfContinent, List<Country> continent) {
+    public Continent(String nameOfContinent, Set<Country> countries) {
         this.nameOfContinent = nameOfContinent;
-        this.countries = continent;
+        this.countries = countries;
     }
 
 
@@ -19,7 +18,7 @@ public class Continent {
         return nameOfContinent;
     }
 
-    public List<Country> getCountries() {
+    public Set<Country> getCountries() {
         return countries;
     }
     public void addCountry(Country country) {
