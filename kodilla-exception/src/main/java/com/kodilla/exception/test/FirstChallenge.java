@@ -28,11 +28,11 @@ public class FirstChallenge {
 
         } catch (ArithmeticException e) {
 
-            System.out.println("Deviding by zero is WRONG!");
+            System.out.println("Division by zero is WRONG!");
 
         } finally {
 
-            System.out.println("Was your divided correct?");
+            System.out.println("Was your division correct?");
 
         }
     }
