@@ -34,7 +34,7 @@ public class WorldTestSuite {
         BigDecimal totalPopulation = BigDecimal.ZERO;
         totalPopulation = totalPopulation.add(wowWorld.getPeopleQuantity());
 
-        BigDecimal expectedPopulation = new BigDecimal("2331");
+        BigDecimal expectedPopulation = new BigDecimal("4442");
         Assert.assertEquals(expectedPopulation, totalPopulation);
     }
 }
