@@ -3,7 +3,9 @@ package com.kodilla.stream.portfolio;
 import org.junit.Assert;
 import org.junit.Test;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -113,5 +115,39 @@ public class BoardTestSuite {
         //Then
         Assert.assertEquals(1, tasks.size());
         Assert.assertEquals("HQLs for analysis", tasks.get(0).getTitle());
+    }
+    @Test
+    public void testAddTaskListFindLongTasks() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        long longTasks = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(t -> t.getCreated())
+                .filter(d -> d.compareTo(LocalDate.now().minusDays(10)) <= 0)
+                .count();
+
+        //Then
+        Assert.assertEquals(2, longTasks);
+    }
+    @Test
+    public void testAddTaskListAverageWorkingOnTask() {
+        Board project = prepareTestData();
+
+        List<TaskList> inProgress = new LinkedList<>();
+        inProgress.add(new TaskList("In Progress"));
+        double longTask = project.getTaskLists().stream()
+                .filter(inProgress::contains)
+                .flatMap(t -> t.getTasks().stream())
+                .map(n -> n.getCreated())
+                .mapToLong(g -> ChronoUnit.DAYS.between(g, LocalDate.now()))
+                .average().getAsDouble();
+
+        Assert.assertEquals(10.0, longTask, 0.001);
+
     }
 }

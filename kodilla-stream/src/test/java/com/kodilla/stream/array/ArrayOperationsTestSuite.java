@@ -1,5 +1,6 @@
 package com.kodilla.stream.array;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ArrayOperationsTestSuite {
@@ -7,26 +8,16 @@ public class ArrayOperationsTestSuite {
     @Test
     public void testGetAverage() {
 
-        int[] numbers = new int[20];
-        numbers[0] = 3;
-        numbers[1] = 65;
-        numbers[2] = 88;
-        numbers[3] = 7;
-        numbers[4] = 95;
-        numbers[5] = 123;
-        numbers[6] = 16;
-        numbers[7] = 9;
-        numbers[8] = 26;
-        numbers[9] = 24;
-        numbers[10] = 12;
-        numbers[11] = 1;
-        numbers[12] = 89;
-        numbers[13] = 36;
-        numbers[14] = 28;
-        numbers[15] = 75;
-        numbers[16] = 15;
-        numbers[17] = 5;
-        numbers[18] = 101;
-        numbers[19] = 888;
+        //given
+        int[] numbers = {1,3,7,9,13,17,24,28,36,38,44,47,55,56,68,70,88,89,101,136};
+
+        //when
+        double average = ArrayOperations.getAverage(numbers);
+
+        //then
+        Assert.assertEquals(46.5, average, 0.001);
+
+
+
     }
 }
