@@ -16,9 +16,15 @@ public class FirstChallenge {
      */
     public static void main(String[] args) {
 
+        double result = 0, a = 0, b = 0;
+
         try {
 
-            divide(3, 0);
+            a = 3;
+            b = 0;
+            result = divide(a, b);
+            System.out.println(result);
+
 
         } catch (ArithmeticException e) {
 
@@ -26,7 +32,7 @@ public class FirstChallenge {
 
         } finally {
 
-            System.out.println("Is your divided was correct?");
+            System.out.println("Was your divided correct?");
 
         }
     }
