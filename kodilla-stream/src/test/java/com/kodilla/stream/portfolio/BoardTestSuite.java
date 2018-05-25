@@ -139,7 +139,7 @@ public class BoardTestSuite {
         Board project = prepareTestData();
 
         List<TaskList> inProgress = new LinkedList<>();
-        inProgress.add(new TaskList("In Progress"));
+        inProgress.add(new TaskList("In progress"));
         double longTask = project.getTaskLists().stream()
                 .filter(inProgress::contains)
                 .flatMap(t -> t.getTasks().stream())
