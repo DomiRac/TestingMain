@@ -9,7 +9,6 @@ public class RouteNotFoundExceptionRunner {
         FlightCrawler crawler = new FlightCrawler();
         Flight flight1 = new Flight("Warsaw Airport", "Doha Airport");
         Flight flight2 = new Flight("Oslo Airport", "New York Airport");
-//        HashMap<String, Boolean> flight = crawler.findFlight();
 
         try {
             crawler.findFlight(flight1);

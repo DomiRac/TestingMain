@@ -10,8 +10,12 @@ public class FlightCrawler {
         flights.put("Doha Airport", true);
         flights.put("Bahama Airport", false);
         flights.put("London Airport", false);
-        if (flights.containsKey(flight.getArrivalAirport()) && flights.containsKey(flight.getDepartureAirport()))  {
-            System.out.println("Connection from: " + flight.getArrivalAirport() + " to: " + flight.getDepartureAirport() + " is available");
+        if (flights.containsKey(flight.getArrivalAirport()) && flights.containsKey(flight.getDepartureAirport())) {
+            if (flights.get(flight.getDepartureAirport()) && flights.get(flight.getArrivalAirport())) {
+                System.out.println("Connection from: " + flight.getArrivalAirport() + " to: " + flight.getDepartureAirport() + " is available");
+            } else {
+                System.out.println("Connection from: " + flight.getArrivalAirport() + " to: " + flight.getDepartureAirport() + " is unavailable");
+            }
         } else {
             throw new RouteNotFoundException("Sorry, there is no flight");
         }
