@@ -3,7 +3,6 @@ package com.kodilla.good.patterns.challenges;
 public class OrderRequest {
     private Product product;
     private User user;
-    private String adress;
 
     public OrderRequest(final Product product, final User user) {
         this.product = product;
