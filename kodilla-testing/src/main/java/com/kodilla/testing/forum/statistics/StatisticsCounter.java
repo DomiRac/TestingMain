@@ -4,13 +4,16 @@ public class StatisticsCounter {
     Statistics statistics;
 
     public void calculateAdvStatistics(Statistics statistics) {
-        int usersQuantity = 0;
-        int postsQuantity = 0;
-        int commentsQuantity = 0;
-        int averagePostsQuantityForUser = 0;
-        int averageCommentsQuantityForUser = 0;
-        int averageCommentsQuantityForPost = 0;
+        int usersQuantity;
+        int postsQuantity;
+        int commentsQuantity;
+        int averagePostsQuantityForUser;
+        int averageCommentsQuantityForUser;
+        int averageCommentsQuantityForPost;
+    }
 
+    public StatisticsCounter(Statistics statistics) {
+        this.statistics = statistics;
     }
 
     public Statistics showStatistics() {
