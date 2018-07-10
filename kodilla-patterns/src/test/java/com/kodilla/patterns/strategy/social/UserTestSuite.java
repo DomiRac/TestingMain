@@ -34,5 +34,7 @@ public class UserTestSuite {
         kiddieShouldUse = kiddie.sharePost();
         System.out.println("Kiddie probably uses now: " + kiddieShouldUse);
 
+        Assert.assertEquals("Facebook", kiddieShouldUse);
+
     }
 }
