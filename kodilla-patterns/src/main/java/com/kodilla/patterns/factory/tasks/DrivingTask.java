@@ -6,6 +6,7 @@ public class DrivingTask implements Task {
     final String taskName;
     final String where;
     final String using;
+    private boolean taskExecuted;
 
     public DrivingTask(String taskName, String where, String using) {
         this.taskName = taskName;
@@ -15,7 +16,7 @@ public class DrivingTask implements Task {
 
     @Override
     public void executeTask() {
-
+        taskExecuted = true;
     }
 
     @Override
@@ -25,12 +26,6 @@ public class DrivingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        Random random = new Random();
-
-        if (random.nextInt(5) < 6) {
-            return true;
-        } else {
-            return false;
-        }
+       return taskExecuted;
     }
 }

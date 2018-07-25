@@ -6,6 +6,7 @@ public class PaintingTask implements Task{
     final String taskName;
     final String color;
     final String whatToPaint;
+    private boolean taskExecuted;
 
     public PaintingTask(String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
@@ -15,6 +16,7 @@ public class PaintingTask implements Task{
 
     @Override
     public void executeTask() {
+        taskExecuted = true;
 
     }
 
@@ -25,12 +27,6 @@ public class PaintingTask implements Task{
 
     @Override
     public boolean isTaskExecuted() {
-        Random random = new Random();
-
-        if (random.nextInt(5) < 6) {
-            return true;
-        } else {
-            return false;
-        }
+       return taskExecuted;
     }
 }

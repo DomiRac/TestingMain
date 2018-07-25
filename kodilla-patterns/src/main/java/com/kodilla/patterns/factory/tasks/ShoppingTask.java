@@ -6,6 +6,7 @@ public class ShoppingTask implements Task {
     final String taskName;
     final String whatToBuy;
     final double quantity;
+    private boolean taskExecuted;
 
     public ShoppingTask(String taskName, String whatToBuy, double quantity) {
         this.taskName = taskName;
@@ -15,6 +16,7 @@ public class ShoppingTask implements Task {
 
     @Override
     public void executeTask() {
+        taskExecuted = true;
     }
 
 
@@ -25,12 +27,6 @@ public class ShoppingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        Random random = new Random();
-
-        if (random.nextInt(5) < 6) {
-            return true;
-        } else {
-            return false;
-        }
+        return taskExecuted;
     }
 }
