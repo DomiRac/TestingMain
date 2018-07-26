@@ -44,7 +44,7 @@ public class DbManagerTestSuite {
 
         DbManager dbManager = DbManager.getInstance();
 
-        String sqlQuery = "SELECT * FROM USERS, POSTS";
+        String sqlQuery = "SELECT * FROM USERS";
         Statement statement = dbManager.getConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(sqlQuery);
 
