@@ -44,14 +44,19 @@ public class DbManagerTestSuite {
 
         DbManager dbManager = DbManager.getInstance();
 
-        String sqlQuery = "SELECT * FROM USERS";
+        String sqlQuery = "SELECT U.FIRSTNAME, U.LASTNAME, P.BODY, P.USER_ID, COUNT(*) AS POSTS_NUMBER\n" +
+                "FROM USERS U, POSTS P\n" +
+                "WHERE U.ID = P.USER_ID\n" +
+                "GROUP BY USER_ID\n" +
+                "HAVING COUNT(*) >= 2;\n" +
+                "\n";
         Statement statement = dbManager.getConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(sqlQuery);
 
         int counter = 0;
         while (resultSet.next()) {
-            System.out.println(resultSet.getString("LASTNAME") + "-" +
-                    resultSet.getString("FIRSTNAME") + "," +
+            System.out.println(resultSet.getString("LASTNAME") + " " +
+                    resultSet.getString("FIRSTNAME") + "-" +
                     resultSet.getInt("POSTS_NUMBER"));
             counter++;
         }
