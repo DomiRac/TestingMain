@@ -42,6 +42,9 @@ public class TaskList {
         return description;
     }
 
+    @OneToMany(
+            mappedBy = "taskList"
+    )
     public List<Task> getTasks() {
         return tasks;
     }

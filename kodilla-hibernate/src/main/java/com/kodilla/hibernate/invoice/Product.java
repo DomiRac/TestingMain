@@ -34,7 +34,11 @@ public class Product {
         return name;
     }
 
-    @OneToMany
+    @OneToMany(
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     public List<Item> getItems() {
         return items;
     }

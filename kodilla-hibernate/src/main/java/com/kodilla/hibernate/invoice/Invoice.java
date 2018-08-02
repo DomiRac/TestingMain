@@ -1,13 +1,12 @@
 package com.kodilla.hibernate.invoice;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "INVOICE")
 public class Invoice {
     private int id;
     private String number;
@@ -35,7 +34,12 @@ public class Invoice {
         return number;
     }
 
-    @OneToMany
+    @OneToMany(
+            targetEntity = Item.class,
+            mappedBy = "invoice",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
     public List<Item> getItems() {
         return items;
     }

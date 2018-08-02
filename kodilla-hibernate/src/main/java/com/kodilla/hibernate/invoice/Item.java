@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "ITEMS")
 public class Item {
     private int id;
     private Product product;
@@ -12,15 +14,14 @@ public class Item {
     private BigDecimal value;
     private Invoice invoice;
 
-    public Item(Product jacket, BigDecimal bigDecimal, int i, BigDecimal decimal) {
-    }
-
-    public Item(int id, Product product, BigDecimal price, int quantity, BigDecimal value) {
-        this.id = id;
+    public Item(Product product, BigDecimal price, int quantity, BigDecimal value) {
         this.product = product;
         this.price = price;
         this.quantity = quantity;
         this.value = value;
+    }
+
+    public Item() {
     }
 
     @Id
@@ -31,9 +32,8 @@ public class Item {
         return id;
     }
 
-    @OneToMany(
+    @ManyToOne(
             targetEntity = Product.class,
-            mappedBy = "product",
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )

@@ -4,13 +4,27 @@ import com.kodilla.hibernate.tasklist.TaskList;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
+@NamedQueries(value = {
+        @NamedQuery(
+                name = "Task.retrieveLongTask",
+                query = "FROM Task WHERE duration > 10"
+        ),
+        @NamedQuery(
+                name = "Task.retrieveShortTask",
+                query = "FROM Task WHERE duration <= 10"
+        )
+})
+
+@NamedNativeQuery(
+        name = "Task.retrieveTaskWithEnoughtTime",
+        query = "SELECT * FROM TASKS " + "WHERE DATEDIFF(DATE_ADD(CREATED, INTERVAL DURATION DAY), NOW > 5)",
+        resultClass = Task.class
+)
 @Entity
 @Table(name = "TASK")
-public class Task {
+public final class Task {
     private int id;
     private String description;
     private Date created;
@@ -53,7 +67,7 @@ public class Task {
     }
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "TASK-FINANCIALS_ID")
+    @JoinColumn(name = "TASK_FINANCIALS_ID")
     public TaskFinancialDetails getTaskFinancialDetails() {
         return taskFinancialDetails;
     }
