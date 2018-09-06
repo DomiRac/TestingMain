@@ -25,7 +25,7 @@ public class AdvStatisticsTestSuite {
     }
 
     @Test
-    public void testUserNumberEmpty() {
+    public void testUsersNumberIsEmpty() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> userList = new ArrayList<>();
@@ -38,7 +38,7 @@ public class AdvStatisticsTestSuite {
         Assert.assertEquals(0,userNumberNow);
     }
     @Test
-    public void testUserNumber100() {
+    public void testUsersNumber100() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> userList = new ArrayList<>();
@@ -54,7 +54,7 @@ public class AdvStatisticsTestSuite {
         Assert.assertEquals(100, userNumberNow);
     }
     @Test
-    public void testPostNumber0() {
+    public void testPostsNumber0() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         int postNumber = 0;
@@ -68,7 +68,7 @@ public class AdvStatisticsTestSuite {
     }
 
     @Test
-    public void testPostNumber1000() {
+    public void testPostsNumber1000() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         int postNumber = 1000;
@@ -94,7 +94,7 @@ public class AdvStatisticsTestSuite {
         Assert.assertEquals(0, commentNumberNow);
     }
     @Test
-    public void testCommentsBiggerPosts() {
+    public void testCommentsBiggerThenPosts() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         int postNumber = 5;
@@ -109,7 +109,7 @@ public class AdvStatisticsTestSuite {
         Assert.assertEquals(20, avCommentPerPostNow, 0.001);
     }
     @Test
-    public void testPostsBiggerComments() {
+    public void testPostsBiggerThenComments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         int postNumber = 100;
